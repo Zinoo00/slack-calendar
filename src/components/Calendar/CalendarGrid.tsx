@@ -267,8 +267,7 @@ export const CalendarGrid: React.FC<CalendarGridProps> = ({
                 "relative border-r border-b border-gray-100 last:border-r-0 p-1 cursor-pointer transition-colors",
                 "hover:bg-gray-50",
                 !isCurrentMonth && "bg-gray-50/50",
-                isSelected && "bg-blue-50 ring-1 ring-blue-200",
-                isTodayCell && !isSelected && "bg-yellow-50"
+                isSelected && "bg-blue-50 ring-1 ring-blue-200"
               )}
               onClick={(e) => handleDayClick(day, e.currentTarget)}
               onDoubleClick={(e) => handleDayDoubleClick(day, e.currentTarget)}
@@ -287,17 +286,7 @@ export const CalendarGrid: React.FC<CalendarGridProps> = ({
                 {format(day, "d")}
               </div>
 
-              {/* Current time indicator - red line for today */}
-              {isTodayCell && currentView === "month" && (
-                <div
-                  className="absolute left-1 right-1 h-px bg-red-500 z-10"
-                  style={{
-                    top: `${20 + (getCurrentTimePosition() || 0) * 0.6}px`, // Approximate position
-                  }}
-                >
-                  <div className="absolute -left-1 -top-1 w-2 h-2 bg-red-500 rounded-full" />
-                </div>
-              )}
+              {/* Current time indicator disabled in month view */}
 
               {/* Events - macOS style simple bars */}
               <div className="space-y-px overflow-hidden">
